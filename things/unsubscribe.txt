@@ -1,0 +1,8 @@
+<table>
+	<tr>
+    <td>
+      <br>
+      <span>If no longer wish to receive these emails, please login and change your preferences.</span>
+    </td>
+  </tr>
+</table>

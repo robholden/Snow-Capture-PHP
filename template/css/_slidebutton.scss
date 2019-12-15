@@ -1,0 +1,232 @@
+#settings-preferences {
+	.switch {
+		max-width: 400px;
+		
+		label {
+			&:first-child {
+				width: 250px;
+			}
+		}
+	}
+}
+
+.switch {
+	display: block;
+	
+	label {
+		cursor: pointer;
+		font-weight: normal;
+		
+		&:first-child {
+			float: left;
+			font-size: 1.25em;
+	
+			background: #F8F8F8;
+			padding: 0.5em;
+			border-radius: $border_radius;	
+			
+			.inner-label {
+				position: relative;
+				top: -2px;
+				border-radius: $border_radius;
+				padding: 7px;
+				background: #555;
+				margin: 0 5px 0 0;	
+				font-size: 10px;
+				color: #FFF;
+				text-transform: uppercase;
+			}
+		}
+		
+		&:last-child {
+			margin: 7px 0 0 0;
+		}
+	}	
+	
+	@media screen and (max-width: $min_width) {
+		label {
+	    
+			
+			&:first-child {
+				float: left;
+				width: 100%;
+				padding: 10px;
+				font-size: 1em;
+		
+				background: #F8F8F8;
+				border-radius: $border_radius;	
+				margin-left: 0 !important;
+			}
+			
+			&:last-child {
+				float: right;
+		    margin: -40px 5px 20px 0;
+			}
+		}	
+  }
+}
+
+.toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+  + label {
+    //display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    + label {
+    	margin-left: 1em;
+    	
+    }
+  }
+}
+
+
+input {
+	$toggle_padding: 2px;
+	$toggle_width: 120px;
+	$toggle_height: 60px;
+	$toggle_before: 2px;
+	$toggle_after: 4px;
+	
+	&.large {
+	  + label {
+	    padding: $toggle_padding;
+	    width: $toggle_width;
+	    height: $toggle_height;
+	    background-color: #dddddd;
+	    border-radius: $toggle_height;
+	    @include transition(background 0.4s);
+	    
+	    &:before, &:after {
+	      display: block;
+	      position: absolute;
+	      content: "";
+	    }
+	    
+	    &:before {
+	      top: $toggle_before;
+	      left: $toggle_before;
+	      bottom: $toggle_before;
+	      right: $toggle_before;
+	      background-color: #fff;
+	      border-radius: $toggle_width;
+	      @include transition(background 0.4s);
+	    }
+	    
+	    &:after {
+	      top: $toggle_after;
+	      left: $toggle_after;
+	      bottom: $toggle_after;
+	      width: $toggle_width - ($toggle_after * 2);
+	      background-color: #dddddd;
+	      border-radius: $toggle_height - ($toggle_height * 2);
+	      @include transitionx2(margin 0.4s, background 0.4s);
+	    }
+	  }
+	  
+	  &:checked + label {
+	    background-color: $primary_colour;
+	    &:after {
+	      margin-left: $toggle_height;
+	      background-color: $primary_colour;
+	    }
+	  }
+	}
+	
+	&.normal {
+		+ label {
+	    padding: $toggle_padding / 2;
+	    width: $toggle_width / 2;
+	    height: $toggle_height / 2;
+	    background-color: #dddddd;
+	    border-radius: $toggle_height / 2;
+	    @include transition(background 0.4s);
+	    
+	    &:before, &:after {
+	      display: block;
+	      position: absolute;
+	      content: "";
+	    }
+	    
+	    &:before {
+	      top: $toggle_before / 2;
+	      left: $toggle_before / 2;
+	      bottom: $toggle_before / 2;
+	      right: $toggle_before / 2;
+	      background-color: #fff;
+	      border-radius: $toggle_height / 2;
+	      @include transition(background 0.4s);
+	    }
+	    
+	    &:after {
+	      top: $toggle_after / 2;
+	      left: $toggle_after / 2;
+	      bottom: $toggle_after / 2;
+	      width: ($toggle_height / 2) - (($toggle_after / 2) * 2);
+	      background-color: #dddddd;
+	      border-radius: ($toggle_height / 2) - (($toggle_after / 2) * 2);
+	      @include transitionx2(margin 0.4s, background 0.4s);
+	    }
+	  }
+	  
+	  &:checked + label {
+	    background-color: $primary_colour;
+	    &:after {
+	      margin-left: $toggle_height / 2;
+	      background-color: $primary_colour;
+	    }
+	  }
+	}
+	
+	&.small {
+		+ label {
+	    padding: $toggle_padding / 3;
+	    width: $toggle_width / 3;
+	    height: $toggle_height / 3;
+	    background-color: #dddddd;
+	    border-radius: $toggle_height / 3;
+	    @include transition(background 0.4s);
+	    
+	    &:before, &:after {
+	      display: block;
+	      position: absolute;
+	      content: "";
+	    }
+	    
+	    &:before {
+	      top: $toggle_before / 3;
+	      left: $toggle_before / 3;
+	      bottom: $toggle_before / 3;
+	      right: $toggle_before / 3;
+	      background-color: #fff;
+	      border-radius: $toggle_height / 3;
+	      @include transition(background 0.4s);
+	    }
+	    
+	    &:after {
+	      top: $toggle_after / 3;
+	      left: $toggle_after / 3;
+	      bottom: $toggle_after / 3;
+	      width: ($toggle_height / 3) - (($toggle_after / 3) * 2);
+	      background-color: #dddddd;
+	      border-radius: ($toggle_height / 3) - (($toggle_after / 3) * 2);
+	      @include transitionx2(margin 0.4s, background 0.4s);
+	    }
+	  }
+	  
+	  &:checked + label {
+	    background-color: $primary_colour;
+	    &:after {
+	      margin-left: $toggle_height / 3;
+	      background-color: $primary_colour;
+	    }
+	  }
+	}
+}

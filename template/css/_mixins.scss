@@ -1,0 +1,262 @@
+
+
+@mixin transition($effect) {
+	-webkit-transition: $effect;
+	-moz-transition: $effect;
+	-ms-transition: $effect;
+	-o-transition: $effect;
+	/* ...and now override with proper CSS property */
+	transition: $effect;
+}
+
+@mixin transitionx2($effect, $effect2) {
+	-webkit-transition: $effect, $effect2;
+	-moz-transition: $effect, $effect2; 
+	-ms-transition: $effect, $effect2;
+	-o-transition: $effect, $effect2;
+	/* ...and now override with proper CSS property */
+	transition: $effect, $effect2;   
+}
+
+@mixin transitionx3($effect, $effect2, $effect3) { 
+	-webkit-transition: $effect, $effect2, $effect3;
+	-moz-transition: $effect, $effect2, $effect3;
+	-ms-transition: $effect, $effect2, $effect3;
+	-o-transition: $effect, $effect2, $effect3;
+	/* ...and now override with proper CSS property */
+	transition: $effect, $effect2, $effect3;
+}
+
+@mixin transitionx4($effect, $effect2, $effect3, $effect4) { 
+	-webkit-transition: $effect, $effect2, $effect3, $effect4;
+	-moz-transition: $effect, $effect2, $effect3, $effect4;
+	-ms-transition: $effect, $effect2, $effect3, $effect4;
+	-o-transition: $effect, $effect2, $effect3, $effect4;
+	/* ...and now override with proper CSS property */
+	transition: $effect, $effect2, $effect3, $effect4;
+}
+
+@mixin transitionx5($effect, $effect2, $effect3, $effect4, $effect5) { 
+	-webkit-transition: $effect, $effect2, $effect3, $effect4, $effect5;
+	-moz-transition: $effect, $effect2, $effect3, $effect4, $effect5;
+	-ms-transition: $effect, $effect2, $effect3, $effect4, $effect5;
+	-o-transition: $effect, $effect2, $effect3, $effect4, $effect5;
+	/* ...and now override with proper CSS property */
+	transition: $effect, $effect2, $effect3, $effect4, $effect5;
+}
+
+@mixin transitionx6($effect, $effect2, $effect3, $effect4, $effect5, $effect6) { 
+	-webkit-transition: $effect, $effect2, $effect3, $effect4, $effect5, $effect6;
+	-moz-transition: $effect, $effect2, $effect3, $effect4, $effect5, $effect6;
+	-ms-transition: $effect, $effect2, $effect3, $effect4, $effect5, $effect6;
+	-o-transition: $effect, $effect2, $effect3, $effect4, $effect5, $effect6;
+	/* ...and now override with proper CSS property */
+	transition: $effect, $effect2, $effect3, $effect4, $effect5;
+}
+
+@mixin transform($type) {
+	-webkit-transform: $type;
+	-moz-transform: $type;
+	-ms-transform: $type;
+	-o-transform: $type;
+	transform: $type;				
+}
+
+@mixin transformx2($type, $type2) {
+	-webkit-transform: $type $type2;
+	-moz-transform: $type $type2;
+	-ms-transform: $type $type2;
+	-o-transform: $type $type2;
+	transform: $type $type2;				
+}
+
+@mixin rotate($deg) {
+	@include transform(rotate($deg));
+}
+
+@mixin allowTransform() {
+	-webkit-transition: -webkit-transform .4s ease; 
+	-moz-transition: -moz-transform .4s ease;
+	-o-transition: -o-transform .4s ease;
+	transition: transform .4s ease;
+}
+
+@mixin allowTransformTime($time) {
+	-webkit-transition: -webkit-transform $time ease; 
+	-moz-transition: -moz-transform $time ease;
+	-o-transition: -o-transform $time ease;
+	transition: transform $time ease;
+}
+
+@mixin allowTransformx1($style) {
+	-webkit-transition: -webkit-transform .4s ease, $style; 
+	-moz-transition: -moz-transform .4s ease, $style;
+	-o-transition: -o-transform .4s ease, $style;
+	transition: transform .4s ease, $style;
+}
+
+@mixin allowTransformTimex2($time, $style, $style2) {
+	-webkit-transition: -webkit-transform $time ease, $style, $style2; 
+	-moz-transition: -moz-transform $time ease, $style, $style2;
+	-o-transition: -o-transform $time ease, $style, $style2;
+	transition: transform $time ease, $style, $style2;
+}
+
+@mixin allowTransformTimex1($time, $style) {
+	-webkit-transition: -webkit-transform $time ease, $style; 
+	-moz-transition: -moz-transform $time ease, $style;
+	-o-transition: -o-transform $time ease, $style;
+	transition: transform $time ease, $style;
+}
+
+
+@mixin animate($style) {
+	-webkit-animation: $style;
+	-moz-animation: $style;
+	-ms-animation: $style; 
+	-o-animation: $style;
+	animation: $style;
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	-o-border-radius: $radius; 
+	border-radius: $radius;
+}
+
+@mixin box-shadow($shadow) {
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+	-ms-box-shadow: $shadow; 
+	-o-box-shadow: $shadow;
+	box-shadow: $shadow;			
+}
+
+@mixin box-shadowx2($shadow, $shadow2) {
+	-webkit-box-shadow: $shadow, $shadow2;
+	-moz-box-shadow: $shadow, $shadow2;
+	-ms-box-shadow: $shadow, $shadow2; 
+	-o-box-shadow: $shadow, $shadow2;
+	box-shadow: $shadow, $shadow2;			
+}
+
+@mixin gradient($bottom, $top) {
+	background-color: $bottom;
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $bottom),color-stop(1, $top));
+	background-image: -ms-linear-gradient(bottom, $bottom, $top);
+	background-image: -moz-linear-gradient(center bottom, $bottom 0, $top 100%);
+	background-image: -o-linear-gradient(bottom, $bottom, $top);
+	background-image: -webkit-linear-gradient(bottom, $bottom, $top);
+}
+
+@mixin text-shadow($shadow) {
+	-webkit-text-shadow: $shadow;
+	-moz-text-shadow: $shadow;
+	-ms-text-shadow: $shadow; 
+	-o-text-shadow: $shadow;
+	text-shadow: $shadow;	
+}
+
+@mixin filter ($effect){
+	-webkit-filter:$effect;
+	-moz-filter:$effect;
+	-ms-filter:$effect;
+	-o-filter:$effect;
+	filter:$effect;
+}
+
+@mixin flex() {
+	display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-direction($dir) {
+	-webkit-flex-direction: $dir;
+   flex-direction: $dir;
+}
+
+/// Mixin to customize scrollbars
+/// Beware, this does not work in all browsers
+/// @author Hugo Giraudel
+/// @param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+/// @param {Color} $foreground-color - Scrollbar's color
+/// @param {Color} $background-color [mix($foreground-color, white, 50%)] - Scrollbar's color
+/// @example scss - Scrollbar styling
+///   @include scrollbars(.5em, slategray);
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin arrow-top($offset) {
+	&:after	{
+	  bottom: 100%; 
+		left: $offset;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+		border-color: rgba(255, 255, 255, 0);
+		border-bottom-color: #FFF;
+		border-width: 10px;
+		margin-left: -10px;
+	}
+}

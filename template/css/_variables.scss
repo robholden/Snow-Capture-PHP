@@ -1,0 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700,100|Pacifico);
+
+$font: 'Raleway', arial;
+$header_font: 'Raleway', arial;
+$fancy: 'Pacifico';
+
+$primary_background: #FFF;
+$secondary_background: #F2F2F2;
+$light_background: #E0EBFA;
+// $light_background: #FFECEC;
+$dark_background: #111;
+
+$colour: #333;
+$dark_colour: #000;
+$green: #70AE83;
+$red: #BE5F5F;
+$red_hover: #BD2020;
+$purple: #bb7db1;
+$gold: #D4B927;
+
+$link_colour: #999;
+$link_hover_colour: #555; 
+
+$error_colour: #DD6F6F;
+$dark_error_colour: #A04F4F;
+$light_error_colour: #EA8282;
+
+$primary_colour: #336699; 
+$dark_primary_colour: #1f3c5a;
+$light_primary_colour: #89B8E6; //#5996D2
+
+$primary_colour_contrast: #FFF;
+$dark_primary_colour_contrast: #EEE;
+
+// $primary_colour: #b32762;
+// $primary_colour_contrast: #FFF;
+// $dark_primary_colour: #96154B;
+// $light_primary_colour: #d6a4b9;
+
+$border_colour: #DDD;
+$dark_border_colour: #999;
+$border_colour_before: #CCC;
+
+$secondary_colour: #5793aa;
+$secondary_colour_contrast: #FFF;
+$dark_secondary_colour: #29647B;
+$light_secondary_colour: #90D0E8;
+
+$tertiary_colour: #12b23c;
+$tertiary_colour_contrast: #FFF; 
+
+$min_width: 768px;
+//$max_width: 1200px;
+$max_width: 1500px;
+$filter_width: 275px;
+
+$padding: 15px;
+
+$border_radius: 3px;
+
+$guest_nav_height: 60px;
+$user_nav_height: 60px;
+
+

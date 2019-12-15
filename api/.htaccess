@@ -1,0 +1,18 @@
+Satisfy Any
+Require all granted
+
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+	ExpiresActive Off
+</IfModule>
+## EXPIRES CACHING ##
+
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	
+	RewriteRule ^admin/maintenance/([A-Z+a-z0-9]+)/([a-z]+)$ admin/maintenance.php?$2=$1
+	
+	RewriteCond %{QUERY_STRING} ^(.*)$
+	RewriteRule ^([A-Z+a-z0-9-_]+)/([A-Z+a-z0-9-+_]+)$ $1/index.php?method=$2&%1
+</IfModule>

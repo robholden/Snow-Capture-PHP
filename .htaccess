@@ -1,0 +1,66 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+RewriteRule ^capture/([0-9-]+)$ content/capture.php?type=capture&image=$1
+RewriteRule ^capture/([0-9-]+)/edit$ content/edit-image.php?type=edit&image=$1
+
+RewriteRule ^sign-out$ content/index.php?logout=true
+RewriteRule ^policies$ content/policies.php?type=terms
+RewriteRule ^policies/terms$ content/policies.php?type=terms
+RewriteRule ^policies/privacy$ content/policies.php?type=privacy
+RewriteRule ^policies/cookies$ content/policies.php?type=cookies
+RewriteRule ^about-us$ content/about-us.php?type=about-us
+RewriteRule ^how-it-works$ content/how-it-works.php?type=how-it-works
+RewriteRule ^stay-updated$ content/stay-updated.php?type=stay-updated
+RewriteRule ^tut-tut-tut$ content/tut-tut-tut.php?type=tut-tut-tut
+RewriteRule ^forgot-password$ content/forgot-password.php?type=forgot
+RewriteRule ^forgot-password/([A-Z+a-z0-9-+_]+)$ content/forgot-password.php?type=reset&token=$1
+RewriteRule ^confirmation/([A-Z+a-z0-9-+_]+)$ content/confirmation.php?type=confirmation&token=$1
+RewriteRule ^([A-Z+a-z0-9-+_]+)/settings$ content/settings.php?type=settings&mode=general
+RewriteRule ^([A-Z+a-z0-9-+_]+)/settings/([A-Z+a-z]+)$ content/settings.php?type=settings&mode=$2
+
+RewriteRule ^hq/$ hq/dashboard.php?mode=moderate-images
+RewriteRule ^hq/([A-Z+a-z-]+)$ hq/dashboard.php?mode=$1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^map$ content/map.php?type=map&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^map/@([0-9\.-]+),([0-9\.-]+),([0-9]+)$ content/map.php?type=map&latitude=$1&longitude=$2&zoom=$3%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^map/@([0-9\.-]+),([0-9\.-]+),([0-9]+)/live$ content/map.php?type=map&latitude=$1&longitude=$2&zoom=$3&livefeed=true%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^search$ content/search.php?type=search&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^timeout$ content/timeout.php?type=timeout&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^sign-in$ content/sign-in.php?type=sign-in&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^sign-up$ content/sign-up.php?type=sign-up&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^([A-Z+a-z0-9-+_]+)/likes$ content/user.php?type=likes&user=$1&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^([A-Z+a-z0-9-+_]+)/(?i)([processing|privates|drafts]+)$ content/user.php?type=$2&user=$1&%1&owner=true
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^([A-Z+a-z0-9-+_]+)$ content/user.php?type=user&user=$1&%1
+
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ /$1.php [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html
+
+</IfModule>

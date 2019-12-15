@@ -1,0 +1,70 @@
+.mobile {
+  @media screen and (max-width: $min_width) {
+  
+    .user-nav {         
+      .user-picture {
+      }
+       
+      .user-name {    
+        float: left;       
+        
+        h3 {
+          font-size: 1.1em;
+          margin-top: 0.5em;
+        }
+        
+        h4 {
+          font-size: 1em;
+          color: #AAA;
+          margin-top: 0.25em;
+        }  
+      }
+    }
+  
+    #toast {
+      font-size: 12px;
+    }
+    
+    #filter-form {
+      padding: 0;
+    }
+    
+    #image-results {
+      margin: auto;
+      
+      li {
+        padding: 0;
+      }
+    } 
+  }
+  
+  .image {
+    margin-bottom: 3%;
+  }
+  
+  #filter-container {
+    padding: 0.25em 0 0;
+  }
+  
+  .user-nav-links {
+  	float: none !important;
+  	text-align: center;
+  	padding: $padding / 2 $padding $padding;
+  }
+  
+  .user-options {
+  	float: right;
+  	margin: 0 !important;
+  	padding: $padding;
+  	
+  	.option-icon {
+  		font-size: 2em;
+  	}
+  } 
+}
+
+@media screen and (max-width: 1024px) {
+  .filter-group {
+    margin-bottom: 1em;
+  } 
+}

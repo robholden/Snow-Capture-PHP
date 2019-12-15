@@ -1,0 +1,104 @@
+
+.rating-container {
+ 	cursor: default;
+ 	
+	.rating {
+	  display: inline-block;
+		color: $primary_colour;
+		font-size: 1.5em;
+  	padding: 0;
+    
+    .empty { display: block; }
+		.half, .full { display: none; }
+	}
+	
+	&[data-rating="5.0"] {
+		.rating {
+			.empty { display: none; }
+			.full { display: block; }
+		}
+	}
+	
+	&[data-rating="4.5"] {
+		.one, .two, .three, .four {
+			.empty { display: none; }
+			.full { display: block; }
+		}
+		
+		.five {
+			.empty { display: none; }
+			.half { display: block; }
+		}
+	}
+	
+	&[data-rating="4.0"] {
+		.one, .two, .three, .four {
+			.empty { display: none; }
+			.full { display: block; }
+		}
+	}
+	
+	&[data-rating="3.5"] {
+		.one, .two, .three {
+			.empty { display: none; }
+			.full { display: block; }
+		}
+		
+		.four {
+			.empty { display: none; }
+			.half { display: block; }
+		}
+	}
+	
+	&[data-rating="3.0"] {
+		.one, .two, .three {
+			.empty { display: none; }
+			.full { display: block; }
+		}
+	}
+	
+	&[data-rating="2.5"] {
+		.one, .two {
+			.empty { display: none; }
+			.full { display: block; }
+		}
+		
+		.three {
+			.empty { display: none; }
+			.half { display: block; }
+		}
+	}
+	
+	&[data-rating="2.0"] {
+		.one, .two {
+			.empty { display: none; }
+			.full { display: block; }
+		}
+	}
+	
+	&[data-rating="1.5"] {
+		.one {
+			.empty { display: none; }
+			.full { display: block; }
+		}
+		
+		.two {
+			.empty { display: none; }
+			.half { display: block; }
+		}
+	}
+	
+	&[data-rating="1.0"] {
+		.one {
+			.empty { display: none; }
+			.full { display: block; }
+		}
+	} 
+	
+	&[data-rating="0.5"] {
+		.one {
+			.empty { display: none; }
+			.half { display: block; }
+		}
+	}
+}

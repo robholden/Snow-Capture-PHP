@@ -1,0 +1,257 @@
+#filter-holder {
+    display: block;
+    width: 100%;
+    clear: both;
+}
+
+.filter-toggle {
+    top: 5px;
+
+    i {
+        @include allowTransformTime(0.25s);
+        font-weight: lighter;
+    }
+
+    &.opened {
+        top: 0;
+
+        i {
+            @include rotate(-180deg);
+        }
+    }
+}
+
+.filter-opened {
+    overflow: hidden;
+
+    body {
+        overflow: hidden;
+    }
+}
+
+#number-results {
+    font-size: 14px;
+    text-transform: none;
+}
+
+.toggle-filter {
+    .fa-times {
+        display: none;
+    }
+
+    .fa-filter,
+    .fa-tasks {
+        display: inline-block;
+    }
+}
+
+.toggle-filter.opened {
+    .fa-times {
+        display: inline-block;
+    }
+
+    .fa-filter,
+    .fa-tasks {
+        display: none;
+    }
+}
+
+.filter-icon {
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+
+.clear-filters {
+    display: none;
+    opacity: 0;
+    z-index: -1;
+    top: 3px;
+    font-size: 0.9em;
+
+    &.opened {
+        display: inline-block;
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+#filter-container {
+}
+
+#filter-form {
+    width: 100%;
+
+    &.opened {
+        display: block;
+    }
+}
+
+.map-popup {
+    width: auto;
+
+    h3 {
+        padding: ($padding / 2) 0 0 !important;
+    }
+
+    .capture-tag {
+        font-size: 14px;
+        width: auto;
+        margin: 1em 1em 0 0;
+
+        span {
+            padding-right: $padding;
+        }
+    }
+}
+
+#map {
+    height: 300px;
+    height: 40vh;
+    border-radius: $border_radius;
+    overflow: hidden;
+
+    &:not(.capture) {
+        margin-bottom: 2em;
+    }
+}
+
+/**
+
+
+NEW FILTER
+IT'S GONNA LOOK SO NICE
+
+
+**/
+%ext-filter-input {
+    display: block;
+    border: 1px solid $border_colour;
+    padding: $padding;
+    background: #fff;
+    font-weight: normal;
+    margin-bottom: 0;
+
+    .filter-input {
+        width: 80%;
+    }
+
+    > .fa {
+        float: right;
+        font-size: 1.25em;
+        top: 3px;
+        left: 2px;
+        color: $primary_colour;
+        padding: 0;
+
+        &:hover {
+            color: $dark_primary_colour;
+        }
+
+        &.fa-map-marker {
+            top: 0;
+        }
+    }
+}
+
+.filter-add-value {
+    @extend %ext-filter-input;
+    border-bottom: 3px solid $primary_colour;
+}
+
+.filter-dropdown {
+    border-bottom: 3px solid $primary_colour;
+    background: #fff;
+}
+
+.filter-dropdown-toggle {
+    @extend %ext-filter-input;
+    border-bottom: none;
+}
+
+.filter-input-tag {
+    width: 80%;
+}
+
+.as-dropdown .filter-values {
+    position: absolute;
+    background: #fff;
+    z-index: 999;
+}
+
+.filter-values {
+    height: 0;
+    width: 100%;
+    opacity: 0;
+    overflow: auto;
+    @include transition(ease 0.25s);
+
+    .filter-value {
+        display: block;
+        width: 100%;
+        padding: ($padding / 2);
+        border-bottom: 1px solid $border_colour;
+
+        &.is-chosen {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        &.inner-value {
+            padding-left: ($padding * 2);
+            color: $dark_primary_colour;
+        }
+
+        &:hover,
+        &.selected {
+            background: #f3f3f3;
+        }
+    }
+}
+
+// &.open {
+//     .filter-values {
+//         opacity: 1;
+//         height: 300px;
+//         border: 1px solid $border_colour;
+//         border-bottom: none;
+//     }
+// }
+
+.filter-chosen {
+    width: 100%;
+    @extend %box-shadow;
+    margin-top: 0.5em;
+    padding: 11px 15px;
+    background: #fff;
+    cursor: default;
+
+    .fa-times {
+        font-size: 1.2em;
+        opacity: 0.5;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.sort-text {
+    display: block;
+    color: #555;
+    font-size: 12px;
+}
+
+/**
+
+Map popup
+
+**/
+.map-popup {
+    .inner-content {
+    }
+
+    .heading {
+        margin: 0.25em 0 0.5em;
+        font-size: 1.75em;
+    }
+}

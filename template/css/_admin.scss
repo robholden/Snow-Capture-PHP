@@ -1,0 +1,90 @@
+
+
+
+.block-div {
+  display: block;
+  width: 100%;
+  border-bottom: 5px solid #EEE;
+  padding: 2em 0;
+}
+
+.moderate-image {
+  img {
+    float: left;
+    width: 150px;
+    border-radius: 3px;
+    margin-right: 1em;
+  }
+
+  a {
+    margin-top: 1.5em;
+  }
+}
+
+
+
+.moderate-container {
+	width: 100%;
+	text-align: center;
+	
+	.moderate-item {
+		max-width: 400px;
+		margin: 2em auto;
+		border: 1px solid $border_colour;
+		background: #FFF;
+		padding: $padding;
+		border-radius: $border_radius;
+	
+		img {
+			width: 100%;
+			border-radius: $border_radius;
+		}
+		
+		h3 {
+			padding: $padding 0 0;
+		}
+	}
+	
+	.moderate-button {
+		width: 50px;
+    height: 50px;
+    font-size: 1.75em;
+    color: #FFF;
+    padding: .5em .4em 0;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 $padding;
+		
+		&.approve-image {
+			margin-left: 0; 
+	    background: $primary_colour;
+		}
+		
+		&.reject-image {
+			background: $error_colour;
+		}
+	}
+	
+	&.in-list {
+		padding: $padding;
+		
+		.moderate-item {
+			margin: 0 auto;
+			border: none;
+			border-radius: 0;
+			padding: 0;
+			
+			h3 {
+				font-size: 1.5em;
+				padding: $padding 0 0;
+			}
+		}
+		
+		.moderate-button {
+			margin-top: $padding;
+	    width: 35px;
+	    height: 35px;
+	    font-size: 1.25em;
+		}
+	}
+}

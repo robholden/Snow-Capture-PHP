@@ -1,0 +1,138 @@
+
+
+
+.posh.white {
+  background-color: $primary_background;
+  @include box-shadow(0 0 5px rgba(0, 0, 0, 0.25));
+  z-index: 1;
+}
+
+.posh.sub-white {
+  .container {
+    display: inline-block;
+    padding: $padding * 1.5;
+    background-color: $primary_background;
+    border: 1px solid $border_colour;  
+    border-radius: $border_radius; 
+    width: auto;
+    
+    &.no-min {
+      min-width: inherit;
+    }   
+    
+    &.max-width {
+      width: 100%;
+    }
+  }
+}
+
+.posh.start { 
+  padding-top: ($padding * 3);
+}
+
+.posh.end {
+  padding-bottom: ($padding * 3);
+}
+
+.posh.to-left {
+  text-align: left;
+}
+
+.posh.normal-content, .posh .normal-content {
+  p {
+    max-width: 100%;
+    font-size: 1.1em;
+  }
+
+  ul {
+    li {
+      list-style: circle;
+      margin-left: $padding * 2;
+      padding: 0.25em 0;
+    }
+  }
+}
+
+.posh.restricted {
+  p {
+    max-width: 1000px;
+    margin-left: 0;
+  } 
+}
+
+.posh {
+  text-align: center;
+
+  h1 {
+    padding: 0 0 $padding;
+    font-size: 3.5em;
+    //text-transform: uppercase;
+    //color: $colour;
+  }
+  
+  h2 {
+  	font-size: 2.25em;
+  }
+
+  h3 {
+    padding-bottom: $padding / 2;
+    font-weight: normal;
+  }
+
+  .break {
+    display: block;
+    clear: both;
+    width: 200px;
+    border-top: 4px solid $light_primary_colour;
+    border-bottom: 4px solid $primary_colour;
+    margin: auto; 
+  }
+
+  .glory {
+    margin-top: ($padding * 3);
+  }
+
+  p {
+    width: 100%;
+    max-width: $max_width / 2;
+    margin: 0.25em auto;
+    font-size: 1.25em;
+  }
+
+  .caption {
+    font-size: 1.5em;
+  }  
+
+  .search { 
+
+    #keyword, .search-input {
+      width: 100%;
+      max-width: $max_width / 3;
+      padding-right: 55px !important;
+    }
+
+    input {
+      color: $primary_colour; 
+      padding: ($padding) !important;
+      background: $primary_background;
+      border-color: $light_primary_colour !important;
+      font-size: 1.25em;
+    } 
+
+    input:focus {
+      border-color: $primary_colour !important;
+    } 
+
+    input:focus + button {
+      color: $primary_colour !important;
+    } 
+
+    .search-btn {
+      top: 2px;  
+      font-size: 2em;
+      color: $light_primary_colour !important;
+      margin-left: -50px !important;
+    }
+  }
+  
+}

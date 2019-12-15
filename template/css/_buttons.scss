@@ -1,0 +1,112 @@
+@mixin outline($bg, $colour)
+{
+ 	@include box-shadowx2(0 0 0 2px $bg, 0 0 0 4px $colour);
+}
+
+.button {
+  display: inline-block;
+	text-transform: uppercase;			
+ 	padding: 0.75em 0.8em;
+ 	font-weight: 600;
+ 	letter-spacing: 1px;
+  border-radius: $border_radius;
+  line-height: 1;
+  text-align: center;
+  font-size: 14px; 
+  
+  border: 2px solid $colour;
+  color: $colour;
+
+  &:visited {
+    color: $colour;
+  }
+  
+  &:hover, &:active, &:focus, &.enabled {
+		background: $colour;
+		color: #FFF;
+  }
+  
+  &:focus {
+  	@include outline(#FFF, #999);
+  }
+  
+  &.disabled {
+    opacity: 0.75;
+    cursor: default;
+  }
+
+	&.button-small {
+	  font-size: 12px;
+	}
+	
+	&.button-large {
+	  font-size: 16px;
+	}
+	
+	&.button-primary {
+	  color: $primary_colour;
+	  border-color: $primary_colour;
+	
+		&:visited {
+			color: $primary_colour;
+		}
+	
+	  &:hover, &:active, &:focus, &.enabled {
+	    background: $primary_colour; 
+	    color: #FFF;
+	  }
+  
+		 &:focus {
+		 	@include outline(#FFF, $primary_colour);
+		 }
+	}
+	
+	&.button-danger {
+		color: $error_colour;
+	  border-color: $error_colour;
+	
+		&:visited {
+			color: $error_colour;
+		}
+	
+	  &:hover, &:active, &:focus, &.enabled {
+	    background: $error_colour; 
+	    color: #FFF;
+	  }
+  
+	  &:focus {
+	  	@include outline(#FFF, $error_colour);
+	  }
+	}	
+	
+	&.button.block {
+	  width: 100%;
+	  
+	  &.button-large {
+	  	padding: 0.8em 1em;
+	  }
+	}
+	
+	&.button-white {
+		color: #FFF;
+	  border-color: #FFF;
+	
+		&:visited {
+			color: #FFF;
+		}
+	
+	  &:hover, &:active, &:focus, &.enabled {
+	    background: #FFF; 
+	    color: #000;
+	  }
+  
+	  &:focus {
+	  	@include box-shadow(none);
+	  }
+	}	
+	
+	.number {
+		margin-left: 5px;
+		font-size: 1.25em;
+	}
+}

@@ -1,0 +1,254 @@
+#Block bad bots
+SetEnvIfNoCase user-Agent ^FrontPage [NC,OR]
+SetEnvIfNoCase user-Agent ^Java.* [NC,OR]
+SetEnvIfNoCase user-Agent ^Microsoft.URL [NC,OR]
+SetEnvIfNoCase user-Agent ^MSFrontPage [NC,OR]
+SetEnvIfNoCase user-Agent ^Offline.Explorer [NC,OR]
+SetEnvIfNoCase user-Agent ^[Ww]eb[Bb]andit [NC,OR]
+SetEnvIfNoCase user-Agent ^Zeus [NC]
+<limit get="" post="" head="">
+Order Allow,Deny
+Allow from all
+Deny from env=bad_bot
+</limit>
+
+ErrorDocument 400 https://www.snowcapture.com/errors/notfound
+ErrorDocument 401 https://www.snowcapture.com/errors/notfound
+ErrorDocument 403 https://www.snowcapture.com/errors/notfound
+ErrorDocument 404 https://www.snowcapture.com/errors/notfound
+ErrorDocument 500 https://www.snowcapture.com/errors/notfound
+ErrorDocument 502 https://www.snowcapture.com/errors/notfound
+ErrorDocument 504 https://www.snowcapture.com/errors/notfound
+
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^capture/([0-9-]+)$ content/capture.php?type=capture&image=$1
+RewriteRule ^capture/([0-9-]+)/edit$ content/edit-image.php?type=edit&image=$1
+
+RewriteRule ^sign-out$ content/index.php?logout=true
+RewriteRule ^policies$ content/policies.php?type=terms
+RewriteRule ^policies/terms$ content/policies.php?type=terms
+RewriteRule ^policies/privacy$ content/policies.php?type=privacy
+RewriteRule ^policies/cookies$ content/policies.php?type=cookies
+RewriteRule ^about-us$ content/about-us.php?type=about-us
+RewriteRule ^how-it-works$ content/how-it-works.php?type=how-it-works
+RewriteRule ^stay-updated$ content/stay-updated.php?type=stay-updated
+RewriteRule ^tut-tut-tut$ content/tut-tut-tut.php?type=tut-tut-tut
+RewriteRule ^forgot-password$ content/forgot-password.php?type=forgot
+RewriteRule ^forgot-password/([A-Z+a-z0-9-+_]+)$ content/forgot-password.php?type=reset&token=$1
+RewriteRule ^confirmation/([A-Z+a-z0-9-+_]+)$ content/confirmation.php?type=confirmation&token=$1
+RewriteRule ^things$ things/index.php
+RewriteRule ^([A-Z+a-z0-9-+_]+)/settings$ content/settings.php?type=settings&mode=general
+RewriteRule ^([A-Z+a-z0-9-+_]+)/settings/([A-Z+a-z]+)$ content/settings.php?type=settings&mode=$2
+
+RewriteRule ^hq/$ hq/dashboard.php?mode=moderate-images
+RewriteRule ^hq/([A-Z+a-z-]+)$ hq/dashboard.php?mode=$1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^locations$ content/locations.php?type=locations&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^spotlight$ content/spotlight.php?type=spotlight&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^timeout$ content/timeout.php?type=timeout&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^sign-in$ content/sign-in.php?type=sign-in&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^sign-up$ content/sign-up.php?type=sign-up&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^([A-Z+a-z0-9-+_]+)/likes$ content/user.php?type=likes&user=$1&%1
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^([A-Z+a-z0-9-+_]+)/(?i)([processing|privates|previews]+)$ content/user.php?type=$2&user=$1&%1&owner=true
+
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^([A-Z+a-z0-9-+_]+)$ content/user.php?type=user&user=$1&%1
+
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ /$1.php [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html
+
+
+
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/javascript text/css application/x-javascript
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4.0[678] no-gzip
+BrowserMatch bMSIE !no-gzip !gzip-only-text/html
+
+<FilesMatch "\.(htm|html|css|js)$">
+AddDefaultCharset UTF-8
+</FilesMatch>
+
+Options All -Indexes
+
+
+
+#Protect the .htaccess File
+<files .htaccess="">
+order allow,deny
+deny from all
+</files>
+
+
+Options +FollowSymlinks
+#Protect against hotlinking
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https://(www.)?snowcapture.com/ [nc]
+
+RewriteCond %{HTTP_USER_AGENT} ^BlackWidow [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Bot\ mailto:craftbot@yahoo.com [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^ChinaClaw [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Custo [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^DISCo [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Download\ Demon [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^eCatch [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EirGrabber [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EmailSiphon [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EmailWolf [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Express\ WebPictures [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^ExtractorPro [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EyeNetIE [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^FlashGet [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^GetRight [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^GetWeb! [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Go!Zilla [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Go-Ahead-Got-It [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^GrabNet [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Grafula [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^HMView [OR] 
+RewriteCond %{HTTP_USER_AGENT} HTTrack [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Stripper [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Sucker [OR] 
+RewriteCond %{HTTP_USER_AGENT} Indy\ Library [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} ^InterGET [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Internet\ Ninja [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^JetCar [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^JOC\ Web\ Spider [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^larbin [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^LeechFTP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Mass\ Downloader [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^MIDown\ tool [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Mister\ PiX [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Navroad [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NearSite [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NetAnts [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NetSpider [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Net\ Vampire [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NetZIP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Octopus [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Explorer [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Navigator [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^PageGrabber [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Papa\ Foto [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^pavuk [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^pcBrowser [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^RealDownload [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^ReGet [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SiteSnagger [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SmartDownload [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SuperBot [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SuperHTTP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Surfbot [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^tAkeOut [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Teleport\ Pro [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^VoidEYE [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Image\ Collector [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Sucker [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebAuto [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebCopier [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebFetch [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebGo\ IS [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebLeacher [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebReaper [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebSauger [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Website\ eXtractor [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Website\ Quester [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebStripper [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebWhacker [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebZIP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Wget [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Widow [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WWWOFFLE [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Xaldon\ WebSpider [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Zeus 
+RewriteRule ^.* - [F,L]
+
+
+# 1 YEAR
+<filesMatch ".(ico|pdf|flv)$">
+Header set Cache-Control "max-age=29030400, public"
+</filesMatch>
+# 1 WEEK
+<filesMatch ".(jpg|jpeg|png|gif|swf)$">
+Header set Cache-Control "max-age=604800, public"
+</filesMatch>
+# 2 DAYS
+<filesMatch ".(xml|txt|css|js)$">
+Header set Cache-Control "max-age=172800, proxy-revalidate"
+</filesMatch>
+# 1 MIN
+<filesMatch ".(html|htm|php)$">
+Header set Cache-Control "max-age=60, private, proxy-revalidate"
+</filesMatch>
+
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType image/jpg "access 1 year"
+	ExpiresByType image/jpeg "access 1 year"
+	ExpiresByType image/gif "access 1 year"
+	ExpiresByType image/png "access 1 year"
+	ExpiresByType text/css "access 1 month"
+	ExpiresByType text/html "access 1 month"
+	ExpiresByType application/pdf "access 1 month"
+	ExpiresByType text/x-javascript "access 1 month"
+	ExpiresByType application/x-shockwave-flash "access 1 month"
+	ExpiresByType image/x-icon "access 1 year"
+	ExpiresDefault "access 1 month"
+</IfModule>
+## EXPIRES CACHING ##
+
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(bmp|css|flv|gif|ico|jpg|jpeg|js|pdf|png|svg|swf|tif|tiff)$">
+        Header set Last-Modified "Mon, 31 Aug 2009 00:00:00 GMT"
+    </FilesMatch>
+	<filesMatch "\.(ico|jpe?g|png|gif|swf)$">
+		Header set Cache-Control "public"
+	</filesMatch>
+	<filesMatch "\.(css)$">
+		Header set Cache-Control "public"
+	</filesMatch>
+	<filesMatch "\.(js)$">
+		Header set Cache-Control "private"
+	</filesMatch>
+	<filesMatch "\.(x?html?|php)$">
+		Header set Cache-Control "private, must-revalidate"
+	</filesMatch>
+</IfModule>
+
+
+<IfModule php5_module>
+    php_value session.cookie_httponly true
+</IfModule>
+

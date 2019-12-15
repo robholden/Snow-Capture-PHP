@@ -1,0 +1,198 @@
+.custom-field {
+  background: #FFF;
+  padding: 0.5em 1em;
+  @extend %border;
+  
+  input {
+    -webkit-box-shadow: inset 0 0 0 100px #FFF;
+  }
+  
+  input, select {
+    display: inline-block;
+    width: 90%;
+    border: none !important;
+    padding: 3px !important;
+    margin-right: -0.5em;
+  } 
+}
+
+.form {
+  input[type="text"],  input[type="email"], input[type="submit"], input[type="password"], textarea, select {
+    padding: $padding / 1.5;    
+    border-radius: 0;
+    height: auto;
+    
+    @extend %border;
+    
+    &[disabled="disabled"] {
+    	cursor: not-allowed;
+    	color: #AAA;
+    }
+  }
+
+  input[type="text"]:focus,  input[type="email"]:focus, input[type="submit"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
+    border-color: $dark_primary_colour;
+    @include box-shadowx2(inset 0 0 0 1px $border_colour, inset 0 0 6px #CCC);
+  }
+
+  input[type="text"] + button,  input[type="email"] + button, input[type="submit"] + button, input[type="password"] + button textarea + button, select + button {
+    color: $border_colour;
+  }
+
+  input[type="text"]:focus + button,  input[type="email"]:focus + button, input[type="submit"]:focus + button, input[type="password"]:focus + button, textarea:focus + button, select:focus + button {
+    color: $dark_border_colour;
+  }
+
+  label {
+    font-weight: normal;
+  }  
+
+  .has-error{
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+      border-color: $error_colour !important;
+    }
+  }
+
+  .input-group {  
+    width:  100%;
+  }
+
+  .primary {
+    background-color: $primary_colour;
+    color: $primary_colour_contrast;
+    padding: $padding / 1.5;
+    border-radius: $border_radius;
+  }
+
+  .primary:hover {
+    background-color: $dark_primary_colour;
+  }
+}
+
+a {
+	label {
+		cursor: pointer;
+	}
+}
+
+select {
+  background-image: url('/template/images/drop-down.png') !important;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: right 5px center;
+  padding-right: $padding * 2;
+
+	&:focus {
+	  background-image: url('/template/images/drop-up.png') !important;
+	  outline: none;
+	}
+}
+
+input[type="text"],  input[type="email"], input[type="submit"], input[type="password"], textarea, select, button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none; /* Opera */
+  -ms-appearance: none; /* Internet Explorer */
+  font-size: 100%;  
+}
+
+input[type="checkbox"] {
+	&+ span {
+		top: 1px;
+	}
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+button {
+	&:active, &:focus {
+  	outline: none;
+	}
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    $light_primary_colour;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    $light_primary_colour;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    $light_primary_colour;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    $light_primary_colour;
+}
+
+span[data-strength], .invalid-circle, .valid-circle {
+	top: 2px;
+	width: 12px;
+	height: 12px;
+	border-radius: 12px;
+	background-color: $error_colour;
+	margin-right: 10px;
+}
+span[data-strength='-2'], span[data-strength='-1'][data-not-required] {
+	opacity: 0;
+}
+span[data-strength='2.5'], span[data-strength='3'] {
+	background-color: #EFE115;
+}
+span[data-strength='4'], .valid-circle {
+	background-color: $green;
+}
+
+.validate-group {
+  width: 100%;
+
+  .validate-circle {
+    display: none;
+  }
+}
+
+.has-error {
+  .invalid-circle {
+    display: block;
+  }
+}
+
+.has-success {
+  .valid-circle {
+    display: block;
+  }
+}
+
+.search-icon {
+  input {
+    padding-right: 25px !important;
+  }
+
+  .search-btn {
+    margin: 0 0 0 -26px !important;
+  }
+}
+
+.form.fixed {
+  width: 100%;
+  max-width: $max_width / 1.5;
+}
+
+.form.centred {
+  margin: auto;
+
+  input, select, textarea, option {
+  }
+}
+
+.full-size {
+  input[type="text"], input[type="email"], input[type="password"], input[type="email"], textarea, select, button {
+    display: block;
+    width: 100%;
+  }
+}
+
+.fixed-input.fixed-small .form {
+  width: $max_width / 6;
+}
